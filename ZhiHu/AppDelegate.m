@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "DataModel.h"
+#import "NetworkModel.h"
 
 @interface AppDelegate ()
 
@@ -17,10 +19,27 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    DataModel *dataModel = [[DataModel alloc]init];
+    self.context = dataModel.managedObjectContext;
+    NetworkModel *networkModel = [[NetworkModel alloc]init];
+    [networkModel fetchAndSaveLatestStoriesIntoManagedObjectContext:self.context];
+   // [[networkModel fetchLatestStories]subscribeNext:^(id x){
+   //     NSLog(@"x:%@",x);
+   // }];
+    
+   // [[networkModel fetchAndSaveLatestStoriesIntoManagedObjectContext:self.context]subscribeError:^(NSError *error){
+  //      NSLog(@"ERROR:%@",error);
+   // }];
+    
+    
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] init]];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
+    
+   
+    
+    
     return YES;
 }
 

@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+//#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <CoreData/CoreData.h>
 
-@interface Story : NSObject
+//@class Date;
+
+@interface Story : NSManagedObject
 
 
 @property (nonatomic, retain) NSString * gaPrefix;
@@ -17,8 +21,8 @@
 @property (nonatomic, retain) NSNumber * isRead;
 @property (nonatomic, retain) NSString * shareURL;
 @property (nonatomic, retain) NSString * title;
-//@property (nonatomic, retain) Date *date;
+@property (nonatomic, retain) NSString *date;
 
--(id)initWithTitle:(NSString *)storyTitle image:(NSString *)nimageURL;
+//-(id)initWithTitle:(NSString *)storyTitle image:(NSString *)nimageURL;
 
 @end

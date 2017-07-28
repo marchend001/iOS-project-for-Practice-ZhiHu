@@ -142,11 +142,12 @@
                           
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     CGPoint contentOffset = [scrollView contentOffset];
-    if (contentOffset.x > self.frame.size.width) { //向左滑动
+    currPage = contentOffset.x/self.frame.size.width;
+    /*if (contentOffset.x > self.frame.size.width) { //向左滑动
         currPage = (currPage + 1) % pageCount;
     } else if (contentOffset.x < self.frame.size.width) { //向右滑动
         currPage = (currPage - 1 + pageCount) % pageCount;
-    }
+    }*/
     self.pageControl.currentPage = currPage;
     
                               

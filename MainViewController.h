@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AFNetworking.h>
+#import "AFNetworking.h"
 #import "TopStoryView.h"
 
-@interface MainViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,TopStoryViewDelegate>
+@interface MainViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,TopStoryViewDelegate,NSFetchedResultsControllerDelegate>
 
 @end
