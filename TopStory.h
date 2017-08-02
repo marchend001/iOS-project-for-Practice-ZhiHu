@@ -16,5 +16,6 @@
 @property (nonatomic, retain) NSNumber * isRead;
 @property (nonatomic, retain) NSString * shareURL;
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * date;
 
 @end

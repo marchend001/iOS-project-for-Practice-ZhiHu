@@ -66,10 +66,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    SWRevealViewController  *revealController = self.revealViewController;
+    [revealController panGestureRecognizer];
 
     // Do any additional setup after loading the view from its nib.
     //self.view.backgroundColor = UIColor.blueColor;
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:20/255.0 green:155/255.0 blue:213/255.0 alpha:1.0]];
+    UIBarButtonItem *sideBarButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"sideMenu"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector(revealToggle:)];
+    
+    self.navigationItem.leftBarButtonItem = sideBarButton;
 
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height)];
     //self.stories = [[NSMutableArray alloc]init];
@@ -259,6 +264,7 @@
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"height for row:%ld",(long)indexPath.row);
     if(indexPath.section == 0){
         return 220.0f;
     }
@@ -298,7 +304,7 @@
 #pragma mark - tableView Delegate
 
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+/*- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NSInteger sectionNum = [[self.storyFetchedResultsController sections] count];
     
@@ -314,7 +320,7 @@
         NSString *curDate = story.date;
         [self.networkModel fetchAndSaveStoriesBeforeCertainDate:curDate intoManagedObjectContext:self.managedObjectContext];
     }
-}
+}*/
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -325,6 +331,22 @@
     [self.navigationController pushViewController:storyCV animated:true];
 }
 
+
+
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+    NSLog(@"end dragging");
+    if(scrollView.contentOffset.y>(scrollView.contentSize.height-scrollView.frame.size.height)){
+        NSLog(@"need load more");
+        NSInteger section = [[self.storyFetchedResultsController sections]count]-1;
+        NSIndexPath *newindexPath = [NSIndexPath indexPathForRow:0 inSection:section];
+        Story *story = [self.storyFetchedResultsController objectAtIndexPath:newindexPath];
+        NSString *curDate = story.date;
+        [self.networkModel fetchAndSaveStoriesBeforeCertainDate:curDate intoManagedObjectContext:self.managedObjectContext];
+    }
+
+}
 
 
 - (void)didReceiveMemoryWarning {
@@ -340,7 +362,12 @@
 
 -(void)controller:(NSFetchedResultsController *)controller didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type{
     
-    
+    if(sectionIndex == 0){
+        [self fetchTopStory:self.managedObjectContext];
+        //[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:sectionIndex]];
+        [self.tableView reloadData];
+        
+    }
     NSUInteger newsectionIndex = sectionIndex+1;
 
     
@@ -395,7 +422,7 @@
 }
 
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
-    
+    //[self fetchTopStory:self.managedObjectContext];
     [self.tableView endUpdates];
 }
 
@@ -405,7 +432,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     
     if([keyPath isEqualToString:@"downLoadCompleted"]){
-        [self fetchTopStory:self.managedObjectContext];
+       // [self fetchTopStory:self.managedObjectContext];
         [self.tableView reloadData];
     }
 }

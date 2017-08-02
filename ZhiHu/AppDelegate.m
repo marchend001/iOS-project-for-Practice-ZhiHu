@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "DataModel.h"
 #import "NetworkModel.h"
+#import "ThemeViewController.h"
 
 @interface AppDelegate ()
 
@@ -30,11 +31,18 @@
    // [[networkModel fetchAndSaveLatestStoriesIntoManagedObjectContext:self.context]subscribeError:^(NSError *error){
   //      NSLog(@"ERROR:%@",error);
    // }];
+    [[networkModel fetchAndSaveThemesIntoManagedObjectContext:self.context] subscribeError:^(NSError *error){
+        NSLog(@"ERROR:%@",error);
+    }];
     
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] init]];
-    self.window.rootViewController = nav;
+    UINavigationController *frontnav = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] init]];
+   // UINavigationController *rearnav = [[UINavigationController alloc]initWithRootViewController:[[ThemeViewController alloc]init]];
+    SWRevealViewController *revealViewController = [[SWRevealViewController alloc]initWithRearViewController:[[ThemeViewController alloc]init] frontViewController:frontnav];
+    //[[SWRevealViewController alloc]initWithRearViewController:[[ThemeViewController alloc]init]] frontViewController:frontnav];
+    
+    self.window.rootViewController = revealViewController;
     [self.window makeKeyAndVisible];
     
    

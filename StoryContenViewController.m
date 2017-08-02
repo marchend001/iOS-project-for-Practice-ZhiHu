@@ -8,6 +8,7 @@
 
 #import "StoryContenViewController.h"
 #import "ContentHeaderView.h"
+#import "StoryContentViewModel.h"
 
 
 @interface StoryContenViewController ()<UIWebViewDelegate>
@@ -24,6 +25,8 @@
 @property (nonatomic, strong) NSString *titleString;
 @property (nonatomic, strong) NSString *imageSourceString;
 
+@property (nonatomic,strong)StoryContentViewModel *viewModel;
+
 
 
 @end
@@ -38,28 +41,45 @@
     
 }
 
+- (UIWebView *) webView{
+    
+    if(!_webView){
+        UIWebView *web = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height)];
+        _webView = web;
+    }
+    return _webView;
+}
+
+- (StoryContentViewModel *)viewModel {
+    
+    if(!_viewModel){
+        _viewModel = [[StoryContentViewModel alloc]init];
+    }
+    return _viewModel;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height)];
+
     self.webView.delegate = self;
     [self.view addSubview:self.webView];
     
-    [self loadData];
+    //[self loadData];
+    [self loadDataRAC];
 }
 
 
--(void)loadData {
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    [manager GET:self.url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress){
-        
-    }success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject){
-        
-        if(responseObject){
-            
+- (void)loadDataRAC {
+    RACSignal *signal = [self.viewModel.fetchStoryContentCommand execute:self.id.stringValue];
+    @weakify(self);
+    [signal subscribeNext:^(id x){
+        //if(responseObject){
+        NSLog(@"2=====");
+        @strongify(self);
+        NSDictionary *responseObject = x;
             self.htmlString = [self generateWebPageFromDictionary:responseObject];
             self.titleString = responseObject[@"title"];
             self.imageSourceString = responseObject[@"image_source"];
@@ -84,18 +104,15 @@
             
             
             
-        } else {
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Message" message:@"Loaded Failed " delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Comfirm", nil];
-          
-            return
-            NSLog(@"暂无数据");
-        }
-        
-    }failure:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject){
         
     }];
     
+    
 }
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

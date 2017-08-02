@@ -21,6 +21,9 @@
 		6A57EB611EBA277E00229D1F /* ZhiHuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57EB601EBA277E00229D1F /* ZhiHuUITests.m */; };
 		6A57EB781EBA36AA00229D1F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A57EB761EBA36AA00229D1F /* MainViewController.m */; };
 		6A57EB791EBA36AA00229D1F /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A57EB771EBA36AA00229D1F /* MainViewController.xib */; };
+		6A8FA9E61F2F17CF000DA05E /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8FA9E51F2F17CF000DA05E /* Theme.m */; };
+		6A8FA9E81F2F1898000DA05E /* Theme+CoreDataClass.h in Sources */ = {isa = PBXBuildFile; fileRef = 6A8FA9E71F2F1898000DA05E /* Theme+CoreDataClass.h */; };
+		6A8FA9EB1F2F1A7F000DA05E /* ThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8FA9EA1F2F1A7F000DA05E /* ThemeViewController.m */; };
 		6ADC9ED11F2716F7009B2711 /* NetworkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADC9ED01F2716F7009B2711 /* NetworkModel.m */; };
 		6ADC9ED41F271761009B2711 /* ZhiHu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6ADC9ED21F271761009B2711 /* ZhiHu.xcdatamodeld */; };
 		6ADC9ED61F271B8B009B2711 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADC9ED51F271B8B009B2711 /* CoreData.framework */; };
@@ -78,6 +81,11 @@
 		6A57EB751EBA36AA00229D1F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		6A57EB761EBA36AA00229D1F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		6A57EB771EBA36AA00229D1F /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		6A8FA9E41F2F17CF000DA05E /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
+		6A8FA9E51F2F17CF000DA05E /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
+		6A8FA9E71F2F1898000DA05E /* Theme+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Theme+CoreDataClass.h"; sourceTree = "<group>"; };
+		6A8FA9E91F2F1A7F000DA05E /* ThemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeViewController.h; sourceTree = "<group>"; };
+		6A8FA9EA1F2F1A7F000DA05E /* ThemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeViewController.m; sourceTree = "<group>"; };
 		6ADC9ECF1F2716F7009B2711 /* NetworkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkModel.h; sourceTree = "<group>"; };
 		6ADC9ED01F2716F7009B2711 /* NetworkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkModel.m; sourceTree = "<group>"; };
 		6ADC9ED31F271761009B2711 /* ZhiHu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ZhiHu.xcdatamodel; sourceTree = "<group>"; };
@@ -162,6 +170,7 @@
 		6A57EB2F1EBA277E00229D1F = {
 			isa = PBXGroup;
 			children = (
+				6A8FA9E71F2F1898000DA05E /* Theme+CoreDataClass.h */,
 				6ADC9ECE1F2716CF009B2711 /* NetworkNodel */,
 				6A57EB741EBA368200229D1F /* View */,
 				6A57EB6E1EBA281300229D1F /* Model */,
@@ -237,6 +246,8 @@
 				6AFA24FD1F29C4E200AA5D95 /* Dao.m */,
 				6AFA24FF1F29C59700AA5D95 /* TopStory.h */,
 				6AFA25001F29C59700AA5D95 /* TopStory.m */,
+				6A8FA9E41F2F17CF000DA05E /* Theme.h */,
+				6A8FA9E51F2F17CF000DA05E /* Theme.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -248,6 +259,8 @@
 				6AFA25021F29FE5300AA5D95 /* MainView */,
 				6A4F28081F079B4B006771B4 /* ContentView */,
 				6A4F28071F079B1F006771B4 /* TopStoryView */,
+				6A8FA9E91F2F1A7F000DA05E /* ThemeViewController.h */,
+				6A8FA9EA1F2F1A7F000DA05E /* ThemeViewController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -479,8 +492,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A8FA9E81F2F1898000DA05E /* Theme+CoreDataClass.h in Sources */,
 				6ADC9EE01F275158009B2711 /* DataModel.m in Sources */,
 				6A4F280B1F079BE4006771B4 /* TopStoryView.m in Sources */,
+				6A8FA9EB1F2F1A7F000DA05E /* ThemeViewController.m in Sources */,
 				6ADC9EDD1F27362C009B2711 /* Date+Create.m in Sources */,
 				6A57EB401EBA277E00229D1F /* AppDelegate.m in Sources */,
 				6A4F28031F05E60C006771B4 /* StoryContenViewController.m in Sources */,
@@ -488,6 +503,7 @@
 				6A57EB3D1EBA277E00229D1F /* main.m in Sources */,
 				6ADC9ED11F2716F7009B2711 /* NetworkModel.m in Sources */,
 				6ADC9ED41F271761009B2711 /* ZhiHu.xcdatamodeld in Sources */,
+				6A8FA9E61F2F17CF000DA05E /* Theme.m in Sources */,
 				6ADC9EDA1F2726E2009B2711 /* Date.m in Sources */,
 				6AFA25061F2B099C00AA5D95 /* StoryContentViewModel.m in Sources */,
 				6A1D852D1EDDC122007A0DB9 /* Story.m in Sources */,

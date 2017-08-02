@@ -10,7 +10,9 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 #import <CoreData/CoreData.h>
-#import "Date+Create.h"
+#import "Theme.h"
+#import "Story.h"
+//#import "Date+Create.h"
 #import <AFNetworking/AFNetworking.h>
 
 @interface NetworkModel : NSObject
@@ -21,4 +23,5 @@
 //- (RACSignal *)fetchLatestStories ;
 //- (void) fetchAndProcess:(NSManagedObjectContext *)context;
 - (void)fetchAndSaveStoriesBeforeCertainDate:(NSString *)date intoManagedObjectContext:(NSManagedObjectContext *)context;
+- (RACSignal *)fetchAndSaveThemesIntoManagedObjectContext:(NSManagedObjectContext *)context;
 @end

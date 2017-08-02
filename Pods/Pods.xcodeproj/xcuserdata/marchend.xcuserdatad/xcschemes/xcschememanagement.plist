@@ -24,25 +24,35 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SWRevealViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3529CBA4EFB79962ED1668A55701E94E</key>
+		<key>20340C4A2DAA7DD4DB767EA67FA708B7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>85D8AB5906C05BDFB6DE323A28714E85</key>
+		<key>2ABB942C328819EEDD531F93AA0BF1A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>90F6421A2953E6BD852A245F38124AD4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C0947AA0B6E54E8C7F179BADE936A9B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>CF671F7E57B92905F1CC91D036D6B4A7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DD0757DA893F46D90E79EF49328D0EA8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

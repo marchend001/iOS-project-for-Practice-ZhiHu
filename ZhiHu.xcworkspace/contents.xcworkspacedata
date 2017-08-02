@@ -2,6 +2,18 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Theme+CoreDataClass.m">
+   </FileRef>
+   <FileRef
+      location = "group:Theme+CoreDataClass.h">
+   </FileRef>
+   <FileRef
+      location = "group:Theme+CoreDataProperties.h">
+   </FileRef>
+   <FileRef
+      location = "group:Theme+CoreDataProperties.m">
+   </FileRef>
+   <FileRef
       location = "group:ZhiHu.xcodeproj">
    </FileRef>
    <FileRef

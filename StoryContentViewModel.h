@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <AFNetworking/AFNetworking.h>
 
 @interface StoryContentViewModel : NSObject
 
 @property (nonatomic,strong)RACCommand *fetchStoryContentCommand;
+@property (nonatomic,strong)NSString *url;
 
 @end
